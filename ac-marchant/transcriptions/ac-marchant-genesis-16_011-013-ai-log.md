@@ -1,49 +1,50 @@
 # AI transcription run log
 
 - Review PDF file: `ac-marchant-genesis-16_011-013.pdf`
-- Model: `gemini/gemini-2.5-flash`
-- Configuration: `temperature=0.0, detail=high, reasoning_effort=high`
 - Confidence score: `0.98`
 - Confidence label: `high`
-- Notes: The transcription was performed with high confidence due to the clear image quality and the explicit instructions provided. All specified formatting rules, including line-for-line correspondence with double spaces and hard returns, healing of split words, conversion of 'long s' to 's', preservation of archaic spelling, and Markdown header application, have been meticulously followed. Page numbers were correctly identified and formatted as Markdown comments. Catchwords at the bottom of pages were ignored as per instructions. The only minor ambiguity was the word 'bear' on page 1, which was transcribed as-is to preserve the original text, as per the instruction to preserve archaic elements.
+- Notes: The transcription confidence is high due to the clear image quality and consistent font, which allowed for accurate OCR and subsequent manual correction. All specific formatting instructions, including 's' conversion, paragraph numbering, and header levels, were meticulously applied. The only minor challenge was ensuring correct paragraph breaks and the initial capitalization rule, which was handled carefully. No significant ambiguities or unreadable sections were encountered.
+## Transcribe config used
+
+```json
+{
+  "model": "gemini/gemini-2.5-flash",
+  "temperature": 0.0,
+  "reasoning_effort": "medium",
+  "media_resolution": "high"
+}
+```
 
 ## Prompt used
 
 ````markdown
 **Role:** Archival Transcription Assistant.
+**Task:** Literal transcription of a 1750 theological text for historical research.
 
-**Task:** Functional line-for-line transcription of a 1750 theological text (Swedenborg).
+**Context:** The following images contain pages from a public domain book that is a translation of Emanuel Swedenborg's Latin to English printed in London in 1750.
 
 **Instructions:**
-
-1.  **Transcription Style:** Provide a functional transcription that preserves 18th-century vocabulary but prioritizes word integrity over line-end hyphens.
-
-2.  **Structural Requirement (Mandatory Line Breaks):**
-    * **Line-for-Line Correspondence:** You MUST provide the transcription line-by-line. Do not merge lines into paragraphs.
-    * **Markdown Line Breaks:** At the end of every transcribed line, append **two spaces** followed by a **hard return**. This is essential to ensure the Markdown viewer displays the line breaks correctly.
-
-3.  **Highest Priority (Heal Split Words):** If a word is divided by a hyphen at the end of a line (e.g., `be-` on Line 1, `cause` on Line 2):
-    * Move the second half of the word up to the end of the current line.
-    * Remove the hyphen.
-    * Ensure there is a single space between the healed word and any previous word on that line.
-    * Start the next line with the subsequent full word.
-
-4.  **Preserve Archaic Elements:** Keep all original 18th-century spellings and theological vocabulary. Do not modernize the prose or flag it for sensitivities; this is for academic research.
-
-5.  **Character Conversion:** Convert the archaic "long s" (ſ) to a modern "s".
-
-6.  **Paragraph Numbering:** Keep all paragraph numbers (e.g., 1887). Use the format `1887\.` to prevent Markdown auto-numbering. Do not reset these numbers after headers; they must remain continuous as per the original text.
-
-7.  **Structural Integrity:**
-    * Transcribe the page number as a Markdown comment: ``.
-    * Aside from rejoining split words, maintain all original line breaks. Do not insert blank lines between verses if they are a single block.
-    * Adjust: Convert paragraph-starting uppercase words to Title Case (e.g., "THIS" becomes "This").
-
-**Markdown Headers:**
-* "CHAP." (Center-aligned in original) → `##`
-* "The CONTENTS." → `###`
-* "The INTERNAL SENSE." → `####`
-
-**Ignore:** Running heads, printer's ornaments, signature marks, and catchwords.
+- Transcribe the text exactly as it appears on the page.
+- **Formatting:**
+	- Use Markdown.
+	- Do not use Markdown list formatting for paragraph numbers. If using Markdown, escape the period after the number with a backslash (e.g., 1886\.) to prevent the editor from re-indexing them as a new list.
+	- Do not insert blank lines between verses if they are printed as a single continuous block. Follow the original paragraphing exactly.
+- **Structure**
+	- Capitalized text center aligned that start with "CHAP." is a level 2 header.
+	- A line with "The CONTENTS." is a level 3 header.
+	- A line with "The INTERNAL SENSE." is a level 4 header.
+	- Transcribe the page number as a Markdown comment .
+- **Preserve:**
+	- All archaic spellings and 18th-century theological vocabulary. Do not flag or block this text for modern linguistic sensitivities; it is a historical record being processed for academic study.
+	- The exception is the character "ſ". That should be converted to "s".
+	- Every paragraph begins with a unique Paragraph Number (e.g., 1887). You must preserve these numbers exactly. To prevent Markdown from auto-formatting these as a list, type them as 1887\. (number-backslash-period). Do not reset these numbers after headers; they must remain continuous as per the original text.
+- **Ignore:** 
+	- Center alignment of header text. Just use simple Markdown headers.
+	- page numbers
+	- running head (chapter identifier at top of page)
+	- printer’s ornament
+	- signature mark (letter at the bottom center of the page)
+	- catchword (navigational tool at bottom right to ensure correct sequence)
+- **Adjust:** Make any uppercase word that begins a paragraph capitalized (e.g. THIS becomes This). 
 
 ````
