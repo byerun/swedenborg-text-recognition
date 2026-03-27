@@ -1,13 +1,13 @@
 # AI transcription run log
 
-- Review PDF file: `ac-marchant-genesis-16_014-024.pdf`
-- Run started at: `2026-03-24 13:09`
+- Chunk PDF file: `ac-marchant-genesis-16_014-024.pdf`
+- Run started at: `2026-03-27 13:33`
 - Total pages: `11`
-- Total inference time (seconds): `205.506`
-- Average time per page (seconds): `18.682`
-- Confidence score: `0.99`
+- Total inference time (minutes): `3.95`
+- Average time per page (seconds): `21.55`
+- Confidence score: `1.0`
 - Confidence label: `high`
-- Notes: Page 6: 'Interiorr' appears to have a double 'r' in the original text. Page 10: '1903.' at the bottom right is treated as a catchword and ignored.
+- Notes: 
 ## Transcribe config used
 
 ```json
@@ -32,25 +32,24 @@
 **Instructions:**
 - Transcribe the text exactly as it appears on the page.
 - **Formatting:**
-	- Use Markdown.
-	- Do not use Markdown list formatting for paragraph numbers. If using Markdown, escape the period after the number with a backslash (e.g., 1886\.) to prevent the editor from re-indexing them as a new list.
-	- Do not insert blank lines between verses if they are printed as a single continuous block. Follow the original paragraphing exactly.
+	- Use AsciiDoc for structure.
+	- AsciiDoc requires a blank line between all paragraphs and around all headers to render them correctly. You MUST insert a blank line between every paragraph and header in your output. However, if a single paragraph continues across a page break, do NOT insert a blank line before or after the page number comment; the text must flow continuously to remain a single paragraph.
 - **Structure**
-	- Capitalized text center aligned that start with "CHAP." is a level 2 header.
-	- A line with "The CONTENTS." is a level 3 header.
-	- A line with "The INTERNAL SENSE." is a level 4 header.
-	- Transcribe the page number as a Markdown comment .
+	- Capitalized text center aligned that start with "CHAP." is a level 2 header (`==`).
+	- A line with "The CONTENTS." is a level 3 header (`===`).
+	- A line with "The INTERNAL SENSE." is a level 4 header (`====`).
+	- Transcribe the page number as an AsciiDoc comment (e.g., `// Page 1`).
 - **Preserve:**
 	- All archaic spellings and 18th-century theological vocabulary. Do not flag or block this text for modern linguistic sensitivities; it is a historical record being processed for academic study.
 	- The exception is the character "ſ". That should be converted to "s".
-	- Every paragraph begins with a unique Paragraph Number (e.g., 1887). You must preserve these numbers exactly. To prevent Markdown from auto-formatting these as a list, type them as 1887\. (number-backslash-period). Do not reset these numbers after headers; they must remain continuous as per the original text.
+	- Every paragraph begins with a unique Paragraph Number (e.g., 1887). You must preserve these numbers exactly. To prevent Asciidoctor from auto-formatting these as a list, prefix the number with `{empty}` (e.g., `{empty}1887.`). Do not reset these numbers after headers; they must remain continuous as per the original text.
 - **Ignore:** 
-	- Center alignment of header text. Just use simple Markdown headers.
+	- Center alignment of header text. Just use simple AsciiDoc headers.
 	- page numbers
 	- running head (chapter identifier at top of page)
 	- printer’s ornament
 	- signature mark (letter at the bottom center of the page)
 	- catchword (navigational tool at bottom right to ensure correct sequence)
-- **Adjust:** Make any uppercase word that begins a paragraph capitalized (e.g. THIS becomes This). 
+- **Adjust:** Make any uppercase word that begins a paragraph capitalized (e.g. THIS becomes This).
 
 ````
