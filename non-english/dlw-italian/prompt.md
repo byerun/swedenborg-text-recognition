@@ -11,6 +11,9 @@
 - **Structure:**
 	- Treat centered, all-caps titles (e.g., "LA SAPIENZA ANGELICA SUL DIVINO AMORE", "PARTE PRIMA") as headers. Use AsciiDoc heading syntax appropriate to their visual hierarchy (`==`, `===`).
 	- Transcribe the page number as an AsciiDoc comment (e.g., `// Page 1`).
+- **Footnotes:**
+	- When a footnote reference (e.g., a superscript number or symbol) appears in the main text, transcribe the corresponding footnote content immediately at that point using the AsciiDoc footnote syntax: `footnote:[Footnote content here.]`.
+	- **Do not** transcribe the footnote text at the bottom of the page; it must be embedded where it is referenced to preserve paragraph continuity.
 - **Preserve:**
 	- All original Italian spelling, grammar, and punctuation (including accents like `à`, `è`, `ì`, `ò`, `ù`). Do not modernize or correct the text; it is a historical record.
 	- Every paragraph begins with a unique Paragraph Number (e.g., `1.`, `2.`, `3.`). You must preserve these numbers exactly. To prevent Asciidoctor from auto-formatting these as a list, prefix the number with `{empty}` (e.g., `{empty}1. L'uomo sa che l'amore esiste...`). Do not reset these numbers; they must remain continuous as per the original text.
