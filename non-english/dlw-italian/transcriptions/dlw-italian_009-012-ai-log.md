@@ -1,20 +1,20 @@
 # AI transcription run log
 
 - Chunk PDF file: `dlw-italian_009-012.pdf`
-- Run started at: `2026-03-28 08:09`
+- Run started at: `2026-03-28 09:39`
 - Total pages: `4`
-- Total inference time (minutes): `0.51`
-- Average time per page (seconds): `7.58`
+- Total inference time (minutes): `3.39`
+- Average time per page (seconds): `50.91`
 - Confidence score: `0.99`
 - Confidence label: `high`
-- Notes: Line 11 (Page 4): The hyphenation in "mede-simo" in the footnote is preserved as it appears in the source, which might be an artifact of the original printing rather than a standard word break. However, the instruction is to transcribe exactly as it appears. The footnote marker '1' is not explicitly visible in the OCR text, but its presence is inferred by the footnote at the bottom of the page. I've placed it after "ultimamente." as visually indicated in the PDF.
+- Notes: Line 115: Footnote 1 placed at the end of paragraph 11 to preserve continuous paragraph flow across the page break.
 ## Transcribe config used
 
 ```json
 {
-  "model": "gemini/gemini-2.5-flash",
+  "model": "gemini/gemini-3.1-pro-preview",
   "temperature": 0.0,
-  "reasoning_effort": "medium",
+  "reasoning_effort": "high",
   "media_resolution": "high",
   "sys_instructions": "Transcribe this chunk PDF to AsciiDoc and respond with JSON only. Use this key order: confidence_score, confidence_label, notes, transcription. confidence_score must be a number from 0.0 to 1.0. confidence_label must be one of: 'low', 'medium', 'high'. Preserve structure and formatting. For every confidence score below 1.0, the 'notes' field must contain a diagnostic list of specific ambiguities. For each instance, specify the line number or the word snippet followed by the conflict (for example, 'Line 8: \"s\" or \"f\" in \"blessing\"?'). Strictly avoid general descriptions of the document or praise for formatting. If the score is 1.0, the 'notes' field should be an empty string."
 }
