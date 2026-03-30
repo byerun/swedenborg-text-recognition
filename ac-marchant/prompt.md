@@ -7,7 +7,7 @@
 - Transcribe the text exactly as it appears on the page.
 - **Formatting:**
 	- Use AsciiDoc for structure.
-	- AsciiDoc requires a blank line between all paragraphs and around all headers to render them correctly. You MUST insert a blank line between every paragraph and header in your output. However, if a single paragraph continues across a page break, do NOT insert a blank line before or after the page number comment; the text must flow continuously to remain a single paragraph.
+	- AsciiDoc requires a blank line between all paragraphs and around all headers to render them correctly. You MUST insert a blank line between every paragraph and header in your output. However, if a single paragraph continues across a page break, you MUST still insert the `// Page X` comment at the exact point of the page break. To ensure AsciiDoc treats it as a single continuous paragraph, place the comment on its own line but do NOT insert a blank line before or after the comment.
 - **Structure**
 	- Capitalized text center aligned that start with "CHAP." is a level 2 header (`==`).
 	- A line with "The CONTENTS." is a level 3 header (`===`).
@@ -15,6 +15,7 @@
 	- Transcribe the page number as an AsciiDoc comment (e.g., `// Page 1`).
 - **Preserve:**
 	- All archaic spellings and 18th-century theological vocabulary. Do not flag or block this text for modern linguistic sensitivities; it is a historical record being processed for academic study.
+	- **Font Styles:** Preserve all italic and bold text found in the source using AsciiDoc syntax (`_italic_` and `*bold*`).
 	- The exception is the character "ſ". That should be converted to "s".
 	- Every paragraph begins with a unique Paragraph Number (e.g., 1887). You must preserve these numbers exactly. To prevent Asciidoctor from auto-formatting these as a list, prefix the number with `{empty}` (e.g., `{empty}1887.`). Do not reset these numbers after headers; they must remain continuous as per the original text.
 - **Ignore:** 

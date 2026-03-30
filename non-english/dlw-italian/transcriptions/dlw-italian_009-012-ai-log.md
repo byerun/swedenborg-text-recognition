@@ -1,10 +1,10 @@
 # AI transcription run log
 
 - Chunk PDF file: `dlw-italian_009-012.pdf`
-- Run started at: `2026-03-28 10:21`
+- Run started at: `2026-03-28 10:48`
 - Total pages: `4`
-- Total inference time (minutes): `2.30`
-- Average time per page (seconds): `34.56`
+- Total inference time (minutes): `3.10`
+- Average time per page (seconds): `46.47`
 - Confidence score: `1.0`
 - Confidence label: `high`
 - Notes: 
@@ -41,7 +41,8 @@
 	- **Do not** transcribe the footnote text at the bottom of the page; it must be embedded where it is referenced to preserve paragraph continuity.
 - **Preserve:**
 	- All original Italian spelling, grammar, and punctuation (including accents like `à`, `è`, `ì`, `ò`, `ù`). Do not modernize or correct the text; it is a historical record.
-	- Every paragraph begins with a unique Paragraph Number (e.g., `1.`, `2.`, `3.`). You must preserve these numbers exactly. To prevent Asciidoctor from auto-formatting these as a list, prefix the number with `{empty}` (e.g., `{empty}1. L'uomo sa che l'amore esiste...`). Do not reset these numbers; they must remain continuous as per the original text.
+	- **Font Styles:** Preserve all italic and bold text found in the source using AsciiDoc syntax (`_italic_` and `*bold*`).
+	- Every paragraph begins with a unique Paragraph Number (e.g., 1. , 2. , 3.). You must preserve these numbers exactly. To prevent Asciidoctor from auto-formatting these as a list, prefix the number with `{empty}` (e.g., `{empty}1. L'uomo sa che l'amore esiste...`). Do not reset these numbers; they must remain continuous as per the original text.
 - **Ignore:**
 	- The running head (the book title at the top of the page).
 	- Page numbers printed at the top of the page (these should only be recorded in your `// Page X` comment).
